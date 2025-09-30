@@ -1,13 +1,5 @@
-#!/usr/bin/env python3
-
-# Word frequency exercise
-# TODO: (Read detailed instructions in the Readme file)
-# 1. Prompt the user: Ask the user to enter a sentence.
-# 2. Split the sentence
-# 3. Create lists to store words and their corresponding frequencies.
-# 4. Iterate through words and update frequencies
-
 import re
+import string
 
 #This is a function that checks if a text qualifies as a sentence. You do not need to modify this!
 def is_sentence(text):
@@ -33,5 +25,27 @@ user_sentence = input("Enter a sentence: ")
 
 while (is_sentence(user_sentence) == False):
     print("This does not meet the criteria for a sentence.")
-    user_input = input("Enter a sentence: ")
-    
+    user_sentence = input("Enter a sentence: ")
+
+# Clean sentence (remove punctuation + lowercase)
+cleaned = user_sentence.translate(str.maketrans("", "", string.punctuation)).lower()
+
+# Split into words
+words_list = cleaned.split()
+
+# Create parallel lists for words and their frequencies
+words = []
+frequencies = []
+
+for word in words_list:
+    if word in words:
+        index = words.index(word)
+        frequencies[index] += 1
+    else:
+        words.append(word)
+        frequencies.append(1)
+
+# Print results
+print("\nWord frequencies:")
+for i in range(len(words)):
+    print(f"{words[i]}: {frequencies[i]}")
