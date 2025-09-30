@@ -18,7 +18,7 @@ print("Fibonacci sequence up to {n} terms:")
 for_in range(n):
   print(a, end=" ")
   a, b = b, a + b
-
+print ()
 # Fibonacci Sequence Exercise
 # TODO: (Read detailed instructions in the Readme file)
 # Prompt the user for the number of terms.
